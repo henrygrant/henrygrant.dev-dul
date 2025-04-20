@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type Project = {
   id: string;
@@ -11,6 +12,7 @@ type Project = {
   demoUrl?: string;
   codeUrl?: string;
   android?: string;
+  logoBgColor: string;
   ios?: string;
 };
 
@@ -22,7 +24,8 @@ export default function Projects() {
       id: "project1",
       title: "Ally Mobile",
       description: "Ally Bank's mobile application that my team maintains.",
-      image: "/placeholder-project.jpg",
+      image: "/Ally_Financial.png",
+      logoBgColor: "#FFFFFF",
       tags: ["React Native", "iOS", "Android", "GitLab", "CI/CD", "DevOps"],
       android:
         "https://play.google.com/store/apps/details?id=com.ally.MobileBanking&hl=en_US",
@@ -30,21 +33,25 @@ export default function Projects() {
     },
     {
       id: "project2",
-      title: "Ridemapper",
+      title: "Hanguko Helper",
+      logoBgColor: "#FFFFFF",
+      image: "/korean-flag.jpg",
       description:
-        "Webapp that draws lines of all the bike rides I've taken on a styled map.",
-      image: "/placeholder-project.jpg",
-      tags: ["Sveltekit", "TypeScript", "Google Maps"],
-      demoUrl: "#",
-      codeUrl: "https://github.com/henrygrant/ridemapper-svelte",
+        "(In development) App that integrates with Anki, ChatGPT, and ElevenLabs to generate flashcards and practice sentences for learning Korean",
+      tags: ["Expo", "React Native", "Typescript", "ChatGPT", "ElevenLabs"],
+      demoUrl: "https://hangukoguesser--5kvlgt0mp6.expo.app/",
+      codeUrl: "https://github.com/henrygrant/HangukoGuesser",
     },
     {
       id: "project3",
-      title: "Hanguko Helper",
+      title: "Ridemapper",
       description:
-        "(In development) App that integrates with Anki, ChatGPT, and ElevenLabs to generate flashcards and practice sentences for learning Korean",
-      image: "/placeholder-project.jpg",
-      tags: ["Expo", "React Native", "Typescript", "ChatGPT", "ElevenLabs"],
+        "Webapp that draws lines of all the bike rides I've taken on a styled map.",
+      image: "/RideMapperLogo.png",
+      logoBgColor: "#f3ef9c",
+      tags: ["Sveltekit", "TypeScript", "Google Maps"],
+      demoUrl: "#",
+      codeUrl: "https://github.com/henrygrant/ridemapper-svelte",
     },
   ];
 
@@ -91,22 +98,16 @@ export default function Projects() {
               className="group border border-foreground/10 rounded-xl overflow-hidden hover:border-foreground/20 transition-all duration-300 flex flex-col"
             >
               <div className="relative h-48 w-full bg-foreground/5 overflow-hidden">
-                {/* This is a placeholder. In a real project, you would use actual project images */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/10 to-[var(--accent)]/10">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1}
-                    stroke="currentColor"
-                    className="w-16 h-16 text-foreground/20"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                    />
-                  </svg>
+                <div
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ backgroundColor: project.logoBgColor }}
+                >
+                  <Image
+                    src={project.image}
+                    alt="ally"
+                    width={300}
+                    height={200}
+                  />
                 </div>
               </div>
 
